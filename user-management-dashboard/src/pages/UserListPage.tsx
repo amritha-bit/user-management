@@ -3,20 +3,22 @@ import { useUsers } from '../hooks/UseUser';
 import { useDebounce } from '../hooks/UseDebounce';
 import { useFavorites } from '../hooks/UseFavorites';
 import { searchUsers, sortUsers, filterUsers, paginateUsers, getTotalPages, exportToCSV } from '../utils/Filter';
-import type { SortField, SortOrder, ViewMode, FilterState } from '../types/Index';
+import { SortField, SortOrder, ViewMode, FilterState, User } from '../types/Index';
 import SearchInput from '../components/SearchInput';
 import UserCard from '../components/Usercard';
 import UserTable from '../components/UserTable';
 import Pagination from '../components/Paginantion';
 import SkeletonCard from '../components/SkeltonCard';
 import EmptyState from '../components/EmptyState';
-import ErrorState from '../components//ErrorState';
+import ErrorState from '../components/ErrorState';
+
 
 const PER_PAGE = 5;
 
 const UserListPage = () => {
 
-  // ── Data ──────────────────────────────────────────
+
+  // ── Dara fetching ───────────────────────────────────
   const { users, loading, error, retry } = useUsers();
   const { favorites, toggle: toggleFavorite } = useFavorites();
 

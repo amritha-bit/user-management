@@ -7,21 +7,26 @@ export interface Address{
     suite:string;
     city:string;
     zipcode:string;
-    geo:string;
+    geo:Geo;
+}
+export interface Company{
+    name:string;
+    catchPhrase:string;
+    bs:string;
 }
 export interface User{
     id:number;
     name:string;
     username:string;
     email:string;
-    address:string;
+    address:Address ;
     phone:string;
     website:string;
-    company:string;
+    company:Company;
 }
-export type SortField ='name ' | 'username' | 'email';
+export type SortField =keyof Pick<User, 'name' | 'username' | 'email'>;
 export type SortOrder = 'asc' | 'desc';
-export type viewMode = 'card' | 'table';
+export type ViewMode = 'card' | 'table';
 export interface FilterState {
     city: string;
     company: string;

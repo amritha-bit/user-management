@@ -1,23 +1,24 @@
 interface Props {
-  value: string;
-  message?: string;
+  message: string;
   onRetry: () => void;
-  onChange: (val: string) => void;
 }
 
-const SearchInput = ({ value, onChange }: Props) => {
+const ErrorState = ({ message, onRetry }: Props) => {
   return (
-    <div className="flex-1">
-      <input
-        type="search"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder="Search by name, username, or email..."
-        className="w-full px-4 py-2.5 rounded-xl border border-gray-200
-          text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+    <div className="text-center py-20">
+      <p className="text-5xl mb-4">⚠️</p>
+      <h3 className="text-lg font-semibold text-gray-700">
+        Something went wrong
+      </h3>
+      <p className="text-sm text-gray-400 mt-1 mb-4">{message}</p>
+      <button
+        onClick={onRetry}
+        className="px-5 py-2 rounded-xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-700"
+      >
+        Try Again
+      </button>
     </div>
   );
 };
 
-export default SearchInput;
+export default ErrorState;
